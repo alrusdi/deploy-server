@@ -23,7 +23,7 @@ Develop a Go-based web server for automating application deployment via GitHub A
 ## Database
 - Use SQLite as the database for data storage.
 - Create three tables:
-  - `applications`: stores the application ID, name, and deployment commands.
+  - `applications`: stores the application ID, name, deployment commands and path to run deployment commands in.
   - `deployment_session`: stores information about the current deployment (unique record ID, application ID, start time, end time, overall status).
   - `deployment_steps`: stores the results of each command execution, including the unique record ID, `deployment_session` ID, command, output, status, and execution time.
 
