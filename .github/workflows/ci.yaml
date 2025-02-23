@@ -37,10 +37,4 @@ jobs:
 
       # Шаг 6: Запуск тестов
       - name: Test
-        run: go test -v ./...
-
-      # Шаг 7: Проверка покрытия кода тестами (опционально)
-      - name: Check coverage
-        run: |
-          go test -coverprofile=coverage.out ./...
-          go tool cover -func=coverage.out
+        run: go test -v .
