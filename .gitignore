@@ -23,3 +23,10 @@ go.work.sum
 
 # env file
 .env
+
+# custom artifacts
+/deploy-server.exe
+/deploy-server
+/error.log
+/db/deploy.db
+/.htpasswd

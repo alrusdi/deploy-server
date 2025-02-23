@@ -1,0 +1,5 @@
+shell:
+  binary: "powershell"
+  args:
+    - "-noprofile"
+    - "-nologo"

@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main  # Запускать на пуше в ветку main
+  pull_request:
+    branches:
+      - main  # Запускать на пул-реквестах в ветку main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest  # Используем последнюю версию Ubuntu
+
+    steps:
+      # Шаг 1: Проверка кода
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Шаг 2: Установка Go
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'  # Указываем версию Go
+
+      # Шаг 3: Установка SQLite (для тестов)
+      - name: Install SQLite
+        run: sudo apt-get install -y sqlite3
+
+      # Шаг 4: Загрузка зависимостей
+      - name: Download dependencies
+        run: go mod download
+
+      # Шаг 5: Сборка приложения
+      - name: Build
+        run: go build -o deploy-server .
+
+      # Шаг 6: Запуск тестов
+      - name: Test
+        run: go test -v ./...
+
+      # Шаг 7: Проверка покрытия кода тестами (опционально)
+      - name: Check coverage
+        run: |
+          go test -coverprofile=coverage.out ./...
+          go tool cover -func=coverage.out
