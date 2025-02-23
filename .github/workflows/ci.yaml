@@ -21,7 +21,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.21'  # Указываем версию Go
+          go-version: '1.23'  # Указываем версию Go
 
       # Шаг 3: Установка SQLite (для тестов)
       - name: Install SQLite
